@@ -8,11 +8,15 @@
     <RootNamespace>Awesome.StringExtensions</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="CultureData\de-DE.json" />
     <None Remove="CultureData\en-US.json" />
     <None Remove="CultureData\es-ES.json" />
+    <None Remove="CultureData\fr-FR.json" />
     <None Remove="CultureData\sv-SE.json" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CultureData\fr-FR.json" />
+    <EmbeddedResource Include="CultureData\de-DE.json" />
     <EmbeddedResource Include="CultureData\es-ES.json" />
     <EmbeddedResource Include="CultureData\en-US.json" />
     <EmbeddedResource Include="CultureData\sv-SE.json" />
