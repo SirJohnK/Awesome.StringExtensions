@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Johan Svensson</Authors>
+    <Company></Company>
+    <Copyright>© 2011 Johan Svensson All Rights Reserved</Copyright>
+    <RootNamespace>Awesome.Extensions</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="CultureData\en-US.json" />
+    <None Remove="CultureData\sv-SE.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CultureData\en-US.json" />
+    <EmbeddedResource Include="CultureData\sv-SE.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+</Project>
