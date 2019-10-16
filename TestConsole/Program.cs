@@ -13,7 +13,7 @@ namespace TestConsole
             Console.WriteLine("hello to the world!".ToTitleCase(new System.Globalization.CultureInfo("en-EN")));
             Console.WriteLine("The world is alive in the USA!".ToTitleCase(new System.Globalization.CultureInfo("en-US")));
             Console.WriteLine("ford mondeo är en fin bil!".ToTitleCase());
-            Console.WriteLine("en produk kan vara ett ärende och resultat!".ToTitleCase());
+            Console.WriteLine("en produkt kan vara ett ärende och resultat!".ToTitleCase());
             Console.ReadLine();
         }
     }
