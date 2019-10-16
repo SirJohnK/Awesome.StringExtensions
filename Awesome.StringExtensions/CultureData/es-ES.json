@@ -1,0 +1,51 @@
+﻿{
+  "Articles": [
+    "el",
+    "la",
+    "las",
+    "lo",
+    "los"
+  ],
+  "Conjunctions": [
+    "aunque",
+    "cuando",
+    "donde",
+    "e",
+    "mas",
+    "o",
+    "ó",
+    "pero",
+    "por qué",
+    "porque",
+    "pues",
+    "que",
+    "si",
+    "u",
+    "y"
+  ],
+  "Prepositions": [
+    "a",
+    "al",
+    "a la derecha",
+    "a la izquierda",
+    "al lado de",
+    "con",
+    "contra",
+    "de",
+    "debajo de",
+    "delante de",
+    "después",
+    "detrás",
+    "en",
+    "encima de",
+    "hace",
+    "hasta",
+    "junto a",
+    "por",
+    "por culpa de",
+    "según",
+    "sin",
+    "sobre",
+    "tras"
+  ]
+}

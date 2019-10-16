@@ -7,9 +7,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace Awesome.Extensions
+namespace Awesome.StringExtensions
 {
-    public static class StringExtensions
+    public static class Extensions
     {
         private static (CultureInfo info, CultureData data) cultureInfoData;
 
