@@ -20,6 +20,10 @@ public static string ToTitleCase(this string text)
 |Language|Culture Data|
 | -------------------  | :------------------: |
 |English|[en-US](Awesome.StringExtensions/CultureData/en-US.json)|
+|French|[fr-FR](Awesome.StringExtensions/CultureData/fr-FR.json)|
+|German|[de-DE](Awesome.StringExtensions/CultureData/de-DE.json)|
+|Spanish|[es-ES](Awesome.StringExtensions/CultureData/es-ES.json)|
+|Swedish|[sv-SE](Awesome.StringExtensions/CultureData/sv-SE.json)|
 
 ### License
 The MIT License (MIT), see [LICENSE](LICENSE) file.
