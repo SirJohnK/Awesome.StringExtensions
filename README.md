@@ -17,6 +17,24 @@ The following string extensions are available in Awesome.StringExtensions:
 * [ToSnakeCase](#ToSnakeCase)
 * [ToTitleCase](#ToTitleCase)
 
+## CleanWhitespace
+
+## RemoveWhitespace
+
+## ReplaceWhitespace
+
+## ToAcronym
+
+## ToAlphabetic
+
+## ToAlphanumeric
+
+## ToCamelCase
+
+## ToSentenceCase
+
+## ToSnakeCase
+
 ## ToTitleCase
 
 Converts string to title case with culture specific handling of articles, conjunctions and prepositions.
