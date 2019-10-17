@@ -7,6 +7,17 @@ A collection of awesome string extension methods.
 The following string extensions are available in Awesome.StringExtensions:
 
 * [CleanWhitespace](#CleanWhitespace)
+* [RemoveWhitespace](#RemoveWhitespace)
+* [ReplaceWhitespace](#ReplaceWhitespace)
+* [ToAcronym](#ToAcronym)
+* [ToAlphabetic](#ToAlphabetic)
+* [ToAlphanumeric](#ToAlphanumeric)
+* [ToCamelCase](#ToCamelCase)
+* [ToSentenceCase](#ToSentenceCase)
+* [ToSnakeCase](#ToSnakeCase)
+* [ToTitleCase](#ToTitleCase)
+
+## CleanWhitespace
 
 Cleans text whitespace and returns the result.
 
@@ -21,18 +32,6 @@ Cleans text whitespace and returns the result.
 /// </returns>
 public static string CleanWhitespace(this string text)
 ```
-        
-* [RemoveWhitespace](#RemoveWhitespace)
-* [ReplaceWhitespace](#ReplaceWhitespace)
-* [ToAcronym](#ToAcronym)
-* [ToAlphabetic](#ToAlphabetic)
-* [ToAlphanumeric](#ToAlphanumeric)
-* [ToCamelCase](#ToCamelCase)
-* [ToSentenceCase](#ToSentenceCase)
-* [ToSnakeCase](#ToSnakeCase)
-* [ToTitleCase](#ToTitleCase)
-
-## CleanWhitespace
 
 ## RemoveWhitespace
 
