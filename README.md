@@ -16,6 +16,10 @@ public static string ToTitleCase(this string text, CultureInfo culture)
 /// </summary>
 public static string ToTitleCase(this string text)
 ```
+#### Supported languages
+|Language|Culture Data|
+| -------------------  | :------------------: |
+|English|[en-US](Awesome.StringExtensions/CultureData/en-US.json)|
 
 ### License
 The MIT License (MIT), see [LICENSE](LICENSE) file.
