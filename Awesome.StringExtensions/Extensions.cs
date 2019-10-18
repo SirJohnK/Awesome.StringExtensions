@@ -18,10 +18,8 @@ namespace Awesome.StringExtensions
         /// Replaces contiguous sequences of whitespace with a single space.
         /// Also Removes all leading and trailing whitespaces.
         /// </summary>
-        /// <param name="text">Input text</param>
-        /// <returns>
-        /// <paramref name="text"/> with no leading, trailing or contiguous sequences of whitespace.
-        /// </returns>
+        /// <param name="text">Input text.</param>
+        /// <returns>Input text with no leading, trailing or contiguous sequences of whitespace.</returns>
         public static string CleanWhitespace(this string text)
         {
             //Verify text parameter
@@ -36,6 +34,11 @@ namespace Awesome.StringExtensions
 
         #region "RemoveWhitespace"
 
+        /// <summary>
+        /// Removes all whitespaces and returns result.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <returns>Input text with no whitespaces.</returns>
         public static string RemoveWhitespace(this string text)
         {
             //Return text without whitespace
@@ -46,6 +49,13 @@ namespace Awesome.StringExtensions
 
         #region "ReplaceWhitespace"
 
+        /// <summary>
+        /// Replaces all whitespaces with specified replacement string and returns result.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <param name="replacement">Replacement string, default empty string.</param>
+        /// <param name="groupreplace">Replace contiguous sequences of whitespace with single replacement string boolean, default true.</param>
+        /// <returns>Input text with all whitespaces replaced with the replacement string.</returns>
         public static string ReplaceWhitespace(this string text, string replacement = "", bool groupreplace = true)
         {
             //Verify text parameter
@@ -60,6 +70,13 @@ namespace Awesome.StringExtensions
 
         #region "ToAcronym"
 
+        /// <summary>
+        /// Create a acronym for the specified text and returns result.
+        /// Remove all non alphabetical characters and forms an acronym from the remaining words.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <returns>An acronym for the input text.</returns>
+        /// <remarks>Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).</remarks>
         public static string ToAcronym(this string text)
         {
             //Verify text parameter
@@ -87,6 +104,12 @@ namespace Awesome.StringExtensions
 
         #region "ToAlphabetic"
 
+        /// <summary>
+        /// Remove all non alphabetical characters and returns result.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <param name="preserveWhitespace">Preserve whitespaces boolean, default true. Otherwise removes all whitespaces.</param>
+        /// <returns>Input text without any non alphabetical characters.</returns>
         public static string ToAlphabetic(this string text, bool preserveWhitespace = true)
         {
             //Verify text parameter
