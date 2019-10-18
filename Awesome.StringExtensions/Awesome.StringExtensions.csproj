@@ -4,8 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Johan Svensson</Authors>
     <Company></Company>
-    <Copyright>© 2011 Johan Svensson All Rights Reserved</Copyright>
+    <Copyright>© 2019 Johan Svensson All Rights Reserved</Copyright>
     <RootNamespace>Awesome.StringExtensions</RootNamespace>
+    <ApplicationIcon>sirjohnk.ico</ApplicationIcon>
+    <Description>A collection of awesome string extension methods.</Description>
+    <PackageProjectUrl>https://github.com/SirJohnK/Awesome.StringExtensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/SirJohnK/Awesome.StringExtensions</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="CultureData\de-DE.json" />
