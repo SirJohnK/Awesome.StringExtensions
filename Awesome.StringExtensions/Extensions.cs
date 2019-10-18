@@ -71,7 +71,7 @@ namespace Awesome.StringExtensions
         #region "ToAcronym"
 
         /// <summary>
-        /// Create a acronym for the specified text and returns result.
+        /// Creates a acronym for the specified text and returns result.
         /// Remove all non alphabetical characters and forms an acronym from the remaining words.
         /// </summary>
         /// <param name="text">Input text.</param>
@@ -105,7 +105,7 @@ namespace Awesome.StringExtensions
         #region "ToAlphabetic"
 
         /// <summary>
-        /// Remove all non alphabetical characters and returns result.
+        /// Removes all non alphabetical characters and returns result.
         /// </summary>
         /// <param name="text">Input text.</param>
         /// <param name="preserveWhitespace">Preserve whitespaces boolean, default true. Otherwise removes all whitespaces.</param>
@@ -128,6 +128,12 @@ namespace Awesome.StringExtensions
 
         #region "ToAlphanumeric"
 
+        /// <summary>
+        /// Removes all non alphanumerical characters and returns result.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <param name="preserveWhitespace">Preserve whitespaces boolean, default true. Otherwise removes all whitespaces.</param>
+        /// <returns>Input text without any non alphanumerical characters.</returns>
         public static string ToAlphanumeric(this string text, bool preserveWhitespace = true)
         {
             //Verify text parameter
@@ -146,6 +152,12 @@ namespace Awesome.StringExtensions
 
         #region "ToCamelCase"
 
+        /// <summary>
+        /// Capitalizes the first letter of each word and removes all whitespaces.
+        /// Also removes all non alphabetical characters.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <returns>Input text with first letter of each word capitalized and without whitespaces.</returns>
         public static string ToCamelCase(this string text)
         {
             //Verify text parameter
@@ -173,6 +185,12 @@ namespace Awesome.StringExtensions
 
         #region "ToSentenceCase"
 
+        /// <summary>
+        /// Capitalizes the first letter of the first word and all other words are lowercase in each sentence.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <param name="cleanWhitespace">Clean whitespaces boolean, default true. (<see cref="CleanWhitespace(string)"/>)</param>
+        /// <returns>Input text with first letter of the first word capitalized and all other words in lowercase in each sentence.</returns>
         public static string ToSentenceCase(this string text, bool cleanWhitespace = true)
         {
             //Verify text parameter
@@ -191,6 +209,12 @@ namespace Awesome.StringExtensions
 
         #region "ToSnakeCase"
 
+        /// <summary>
+        /// All whitespaces are replaced with underscore character.
+        /// Replaces all contiguous sequences of whitespace with a single underscore.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <returns>Input text with all whitespaces replaced with underscore character.</returns>
         public static string ToSnakeCase(this string text)
         {
             //Verify text parameter
@@ -209,10 +233,20 @@ namespace Awesome.StringExtensions
         #region "ToTitleCase"
 
         /// <summary>
-        /// Stores culture support data.
+        /// Stores culture support data for ToTitleCase method. (<see cref="ToTitleCase(string, CultureInfo)"/>)
         /// </summary>
         private static (CultureInfo info, CultureData data) cultureInfoData;
 
+        /// <summary>
+        /// Retrieves culture support data from embedded resource json files, based on specified culture.
+        /// </summary>
+        /// <param name="culture">Culture to identify culture support data file.</param>
+        /// <returns>Status boolean, indicating if support data was found for specified culture.</returns>
+        /// <remarks>
+        /// If culture data is not found for specified culture, attempt is made to find another support data with same base language.
+        /// e.g. If culture en-GB is not found, a search is made based on culture TwoLetterISOLanguageName (en).
+        /// Any culture with same base language will be used as a replacement. (en-US could replace en-GB)
+        /// </remarks>
         private static bool InitializeCultureData(CultureInfo culture)
         {
             //Init
@@ -265,9 +299,23 @@ namespace Awesome.StringExtensions
                 succeeded = false;
             }
 
+            //Return status if culture resource was found
             return succeeded;
         }
 
+        /// <summary>
+        /// Converts string to title case with culture specific handling of articles, conjunctions and prepositions.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <param name="culture">Language culture to retrive and identify words.</param>
+        /// <returns>Input text with word casing based on title case rules.</returns>
+        /// <remarks>
+        /// Rules:
+        /// - Capitalize the first word and the last word of the title.
+        /// - Capitalize the principal words.
+        /// - Capitalize all words of four letters or more.
+        /// - Do not capitalize articles, conjunctions, and prepositions of three letters or fewer.
+        /// </remarks>
         public static string ToTitleCase(this string text, CultureInfo culture)
         {
             //Verify text parameter
@@ -301,6 +349,11 @@ namespace Awesome.StringExtensions
             }
         }
 
+        /// <summary>
+        /// Converts string to title case with current culture specific handling of articles, conjunctions and prepositions.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <returns>Input text with word casing based on title case rules. (<see cref="ToTitleCase(string, CultureInfo)"/>)</returns>
         public static string ToTitleCase(this string text)
         {
             return ToTitleCase(text, CultureInfo.CurrentCulture);
