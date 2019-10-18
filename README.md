@@ -19,6 +19,20 @@ The following string extensions are available in Awesome.StringExtensions:
 
 ## CleanWhitespace
 
+Cleans text whitespace and returns the result.
+
+```csharp
+/// <summary>
+/// Replaces contiguous sequences of whitespace with a single space.
+/// Also Removes all leading and trailing whitespaces.
+/// </summary>
+/// <param name="text">Input text</param>
+/// <returns>
+/// <paramref name="text"/> with no leading, trailing or contiguous sequences of whitespace.
+/// </returns>
+public static string CleanWhitespace(this string text)
+```
+
 ## RemoveWhitespace
 
 ## ReplaceWhitespace
