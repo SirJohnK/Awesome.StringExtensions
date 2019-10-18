@@ -20,8 +20,8 @@ The following string extensions are available in Awesome.StringExtensions:
 ## CleanWhitespace
 
 Cleans text whitespace and returns the result.
-..* Replaces contiguous sequences of whitespace with a single space.
-..* Also Removes all leading and trailing whitespaces.
+..- Replaces contiguous sequences of whitespace with a single space.
+..- Also Removes all leading and trailing whitespaces.
 
 ```csharp
 /// <summary>
