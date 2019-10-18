@@ -20,8 +20,8 @@ The following string extensions are available in Awesome.StringExtensions:
 ## CleanWhitespace
 
 Cleans text whitespace and returns the result.
-..- Replaces contiguous sequences of whitespace with a single space.
-..- Also Removes all leading and trailing whitespaces.
+* Replaces contiguous sequences of whitespace with a single space.
+* Also Removes all leading and trailing whitespaces.
 
 ```csharp
 /// <summary>
@@ -64,8 +64,8 @@ public static string ReplaceWhitespace(this string text, string replacement = ""
 ## ToAcronym
 
 Create a acronym for the specified text and returns result.
-..* Remove all non alphabetical characters and forms an acronym from the remaining words.
-..* *Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).*
+* Remove all non alphabetical characters and forms an acronym from the remaining words.
+* *Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).*
 
 ```csharp
 /// <summary>
@@ -91,7 +91,6 @@ Remove all non alphabetical characters and returns result.
 /// <returns>Input text without any non alphabetical characters.</returns>
 public static string ToAlphabetic(this string text, bool preserveWhitespace = true)
 ```
-
 
 ## ToAlphanumeric
 
