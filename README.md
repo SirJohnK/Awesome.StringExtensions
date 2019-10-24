@@ -7,8 +7,14 @@ A collection of awesome string extension methods.
 The following string extensions are available in Awesome.StringExtensions:
 
 * [CleanWhitespace](#CleanWhitespace)
+
+* [CountSentences](#CountSentences)
+* [CountUniqueWords](#CountUniqueWords)
+* [CountWordLengths](#CountWordLengths)
+* [CountWords](#CountWords)
 * [RemoveWhitespace](#RemoveWhitespace)
 * [ReplaceWhitespace](#ReplaceWhitespace)
+* [Sentences](#Sentences)
 * [ToAcronym](#ToAcronym)
 * [ToAlphabetic](#ToAlphabetic)
 * [ToAlphanumeric](#ToAlphanumeric)
@@ -16,6 +22,8 @@ The following string extensions are available in Awesome.StringExtensions:
 * [ToSentenceCase](#ToSentenceCase)
 * [ToSnakeCase](#ToSnakeCase)
 * [ToTitleCase](#ToTitleCase)
+* [UniqueWords](#UniqueWords)
+* [Words](#Words)
 
 ## CleanWhitespace
 
