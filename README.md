@@ -63,14 +63,14 @@ public static string ReplaceWhitespace(this string text, string replacement = ""
         
 ## ToAcronym
 
-Create a acronym for the specified text and returns result.
-* Remove all non alphabetical characters and forms an acronym from the remaining words.
+Creates a acronym for the specified text and returns result.
+* Removes all non alphabetical characters and forms an acronym from the remaining words.
 * *Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).*
 
 ```csharp
 /// <summary>
-/// Create a acronym for the specified text and returns result.
-/// Remove all non alphabetical characters and forms an acronym from the remaining words.
+/// Creates a acronym for the specified text and returns result.
+/// Removes all non alphabetical characters and forms an acronym from the remaining words.
 /// </summary>
 /// <param name="text">Input text.</param>
 /// <returns>An acronym for the input text.</returns>
@@ -94,26 +94,93 @@ public static string ToAlphabetic(this string text, bool preserveWhitespace = tr
 
 ## ToAlphanumeric
 
+Removes all non alphanumerical characters and returns result.
+
+```csharp
+/// <summary>
+/// Removes all non alphanumerical characters and returns result.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <param name="preserveWhitespace">Preserve whitespaces boolean, default true. Otherwise removes all whitespaces.</param>
+/// <returns>Input text without any non alphanumerical characters.</returns>
+public static string ToAlphanumeric(this string text, bool preserveWhitespace = true)
+```
+
 ## ToCamelCase
+
+Capitalizes the first letter of each word and removes all whitespaces.
+
+```csharp
+/// <summary>
+/// Capitalizes the first letter of each word and removes all whitespaces.
+/// Also removes all non alphabetical characters.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>Input text with first letter of each word capitalized and without whitespaces.</returns>
+public static string ToCamelCase(this string text)
+```
 
 ## ToSentenceCase
 
+Capitalizes the first letter of the first word and all other words are lowercase in each sentence.
+
+```csharp
+/// <summary>
+/// Capitalizes the first letter of the first word and all other words are lowercase in each sentence.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <param name="cleanWhitespace">Clean whitespaces boolean, default true. (<see cref="CleanWhitespace(string)"/>)</param>
+/// <returns>Input text with first letter of the first word capitalized and all other words in lowercase in each sentence.</returns>
+public static string ToSentenceCase(this string text, bool cleanWhitespace = true)
+```
+
 ## ToSnakeCase
+
+All whitespaces are replaced with underscore character.
+* Replaces all contiguous sequences of whitespace with a single underscore.
+
+```csharp
+/// <summary>
+/// All whitespaces are replaced with underscore character.
+/// Replaces all contiguous sequences of whitespace with a single underscore.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>Input text with all whitespaces replaced with underscore character.</returns>
+public static string ToSnakeCase(this string text)
+```
 
 ## ToTitleCase
 
 Converts string to title case with culture specific handling of articles, conjunctions and prepositions.
 
+Rules:
+* Capitalize the first word and the last word of the title.
+* Capitalize the principal words.
+* Capitalize all words of four letters or more.
+* Do not capitalize articles, conjunctions, and prepositions of three letters or fewer.
+
 ```csharp
 /// <summary>
 /// Converts string to title case with culture specific handling of articles, conjunctions and prepositions.
 /// </summary>
+/// <param name="text">Input text.</param>
+/// <param name="culture">Language culture to retrive and identify words.</param>
+/// <returns>Input text with word casing based on title case rules.</returns>
+/// <remarks>
+/// Rules:
+/// - Capitalize the first word and the last word of the title.
+/// - Capitalize the principal words.
+/// - Capitalize all words of four letters or more.
+/// - Do not capitalize articles, conjunctions, and prepositions of three letters or fewer.
+/// </remarks>
 public static string ToTitleCase(this string text, CultureInfo culture)
 ```
 ```csharp
 /// <summary>
 /// Converts string to title case with current culture specific handling of articles, conjunctions and prepositions.
 /// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>Input text with word casing based on title case rules. (<see cref="ToTitleCase(string, CultureInfo)"/>)</returns>
 public static string ToTitleCase(this string text)
 ```
 
@@ -126,6 +193,10 @@ public static string ToTitleCase(this string text)
 |German|[de-DE](Awesome.StringExtensions/CultureData/de-DE.json)|
 |Spanish|[es-ES](Awesome.StringExtensions/CultureData/es-ES.json)|
 |Swedish|[sv-SE](Awesome.StringExtensions/CultureData/sv-SE.json)|
+
+If culture data is not found for specified culture, attempt is made to find another support data with same base language.
+e.g. If culture en-GB is not found, a search is made based on culture TwoLetterISOLanguageName (en).
+Any culture with same base language will be used as a replacement. (en-US could replace en-GB)
 
 ## License
 
