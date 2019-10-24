@@ -6,7 +6,7 @@ using System;
 namespace Tests
 {
     [TestClass]
-    public class ToTitleCaseTests
+    public class CaseExtensionsTests
     {
         [TestMethod]
         public void ToTitleCase_ShouldThrowArgumentNullException_IfCultureIsNull()
