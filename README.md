@@ -7,7 +7,6 @@ A collection of awesome string extension methods.
 The following string extensions are available in Awesome.StringExtensions:
 
 * [CleanWhitespace](#CleanWhitespace)
-
 * [CountSentences](#CountSentences)
 * [CountUniqueWords](#CountUniqueWords)
 * [CountWordLengths](#CountWordLengths)
@@ -41,6 +40,58 @@ Cleans text whitespace and returns the result.
 public static string CleanWhitespace(this string text)
 ```
 
+## CountSentences
+
+Count the number of sentences.
+
+```csharp
+/// <summary>
+/// Count the number of sentences.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>The number of sentences in the input text.</returns>
+public static int CountSentences(this string text)
+```
+
+## CountUniqueWords
+
+Count the number of unique words in specified text.
+
+```csharp
+/// <summary>
+/// Count the number of unique words in specified text.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>The unique words count.</returns>
+public static int CountUniqueWords(this string text)
+```
+
+## CountWordLengths
+
+Count the occurrence of all different word lengths.
+
+```csharp
+/// <summary>
+/// Count the occurrence of all different word lengths.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>The ordered list of occurrences of all different word lengths.</returns>
+public static IOrderedEnumerable<(int Length, int Count)> CountWordLengths(this string text)
+```
+
+## CountWords
+
+Count the number of words.
+
+```csharp
+/// <summary>
+/// Count the number of words.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>The numbers of words in the input text.</returns>
+public static int CountWords(this string text)
+```
+
 ## RemoveWhitespace
 
 Removes all whitespaces and returns result.
@@ -68,7 +119,21 @@ Replaces all whitespaces with specified replacement string and returns result.
 /// <returns>Input text with all whitespaces replaced with the replacement string.</returns>
 public static string ReplaceWhitespace(this string text, string replacement = "", bool groupreplace = true)
 ```
-        
+
+## Sentences
+
+Get all sentences in specified text.
+
+```csharp
+/// <summary>
+/// Get all sentences in specified text.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <param name="cleanNewLine">Clean new lines boolean, default true.</param>
+/// <returns>All found and not empty sentences from input text.</returns>
+public static IEnumerable<string> Sentences(this string text, bool cleanNewLine = true)
+```
+
 ## ToAcronym
 
 Creates a acronym for the specified text and returns result.
@@ -205,6 +270,33 @@ public static string ToTitleCase(this string text)
 If culture data is not found for specified culture, attempt is made to find another support data with same base language.
 e.g. If culture en-GB is not found, a search is made based on culture TwoLetterISOLanguageName (en).
 Any culture with same base language will be used as a replacement. (en-US could replace en-GB)
+
+## UniqueWords
+
+Get all unique words in specified text.
+
+```csharp
+/// <summary>
+/// Get all unique words in specified text.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>All unique words from input text.</returns>
+public static IEnumerable<string> UniqueWords(this string text)
+```
+
+## Words
+
+Get all words in specified text.
+
+```csharp
+/// <summary>
+/// Get all words in specified text.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>All found and not empty words from input text.</returns>
+/// <remarks>All empty and only whitespace words are excluded.</remarks>
+public static IEnumerable<string> Words(this string text)
+```
 
 ## License
 
