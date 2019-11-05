@@ -25,14 +25,11 @@ namespace Awesome.StringExtensions
             if (string.IsNullOrWhiteSpace(text))
                 return text;
 
-            //Remove all non alphanumeric characters, but preserve whitespace
-            var result = text.ToAlphanumeric();
-
             //Handle all words
-            result = Regex.Replace(result, @"\w+", new MatchEvaluator(WordEvaluator), RegexOptions.IgnoreCase);
+            var result = Regex.Replace(text, @"\w+", new MatchEvaluator(WordEvaluator), RegexOptions.IgnoreCase);
 
-            //Return result without whitespace
-            return result.RemoveWhitespace();
+            //Return result without all non alphanumeric characters and whitespace
+            return result.ToAlphanumeric(false);
 
             //Internal evaluator
             string WordEvaluator(Match word)
@@ -206,7 +203,12 @@ namespace Awesome.StringExtensions
                 var lower = word.Value.ToLower();
 
                 //Evaluate word
-                return word.Index > 0 && cultureInfoData.data.Articles.Contains(lower) || cultureInfoData.data.Conjunctions.Contains(lower) || cultureInfoData.data.Prepositions.Contains(lower) ? lower : word.Value;
+                var lastWord = !word.NextMatch().Success;
+                return word.Index > 0 && !lastWord && word.Value.Length <= 3
+                    && cultureInfoData.data.Articles.Contains(lower)
+                    || cultureInfoData.data.Conjunctions.Contains(lower)
+                    || cultureInfoData.data.Prepositions.Contains(lower)
+                    ? lower : word.Value;
             }
         }
 
