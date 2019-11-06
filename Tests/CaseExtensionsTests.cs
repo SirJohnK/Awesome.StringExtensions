@@ -10,7 +10,7 @@ namespace Tests
     public class CaseExtensionsTests
     {
         private const string BaseText = "Lorem Ipsum";
-        private const string BaseSentence = "Mr. Sherlock Holmes and Dr. John Watson were better than the F.B.I. at crime fighting!";
+        private const string BaseSentence = "Mr Sherlock Holmes and Dr John Watson were better than the F.B.I. at crime fighting!";
 
         #region "ToCamelCase Tests"
         [TestMethod]
@@ -26,7 +26,7 @@ namespace Tests
         public void ToSentenceCase_ShouldBeCorrectSentenceCase()
         {
             //Assert
-            BaseSentence.ToSentenceCase().Should().Be("Mr. sherlock holmes and dr. john watson were better than the f.b.i. at crime fighting!", "because it should have correct sentence casing");
+            BaseSentence.ToSentenceCase().Should().Be("Mr sherlock holmes and dr john watson were better than the f.b.i. at crime fighting!", "because it should have correct sentence casing");
         }
         #endregion
 
@@ -54,7 +54,7 @@ namespace Tests
         public void ToTitleCase_ShouldBeCorrectTitleCase()
         {
             //Assert
-            BaseSentence.ToTitleCase(new CultureInfo("en-US")).Should().Be("Mr. Sherlock Holmes and Dr. John Watson Were Better than the F.B.I. at Crime Fighting!", "because it should have correct title casing");
+            BaseSentence.ToTitleCase(new CultureInfo("en-US")).Should().Be("Mr Sherlock Holmes and Dr John Watson Were Better than the F.B.I. at Crime Fighting!", "because it should have correct title casing");
         }
         #endregion
     }

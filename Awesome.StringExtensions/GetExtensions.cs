@@ -52,8 +52,9 @@ namespace Awesome.StringExtensions
         /// </summary>
         /// <param name="text">Input text.</param>
         /// <param name="cleanNewLine">Clean new lines boolean, default true.</param>
+        /// <param name="cleanWhitepace">Clean whitespaces boolean, default true. Otherwise preserve all whitespaces.</param>
         /// <returns>All found and not empty sentences from input text.</returns>
-        public static IEnumerable<string> Sentences(this string text, bool cleanNewLine = true)
+        public static IEnumerable<string> Sentences(this string text, bool cleanNewLine = true, bool cleanWhitepace = true)
         {
             //Verify text parameter
             if (string.IsNullOrWhiteSpace(text))
@@ -66,6 +67,10 @@ namespace Awesome.StringExtensions
             //Clean NewLine
             if (cleanNewLine)
                 result = result.Select(sentence => sentence.Replace(Environment.NewLine, string.Empty));
+
+            //Clean Whitespace
+            if (cleanWhitepace)
+                result = result.Select(sentence => sentence.CleanWhitespace());
 
             //Return found sentences
             return result;

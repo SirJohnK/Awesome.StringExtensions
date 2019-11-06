@@ -8,8 +8,8 @@ namespace Tests
     [TestClass]
     public class CountExtensionsTests
     {
-        private const string BaseSentence = "Mr. Sherlock Holmes and Dr. John Watson were better than the F.B.I. at crime fighting!";
-        private const string DuplicateWordSentence = BaseSentence + " That is the truth!";
+        private const string BaseSentence = "Mr Sherlock Holmes and Dr John Watson were better than the F.B.I. at crime fighting!";
+        private const string DuplicateWordSentence = BaseSentence + " That is the truth and nothing but the truth!";
 
         #region "CountWords Tests"
         [TestMethod]
@@ -25,7 +25,7 @@ namespace Tests
         public void CountUniqueWords_ShouldBeCorrectCount()
         {
             //Assert
-            DuplicateWordSentence.CountUniqueWords().Should().Be(20, "because all unique words should be counted");
+            DuplicateWordSentence.CountUniqueWords().Should().Be(22, "because all unique words should be counted");
         }
         #endregion
 
@@ -46,7 +46,7 @@ namespace Tests
         public void CountSentences_ShouldBeCorrectCount()
         {
             //Assert
-            DuplicateWordSentence.CountSentences().Should().Be(4, "because all sentences should be counted");
+            DuplicateWordSentence.CountSentences().Should().Be(2, "because all sentences should be counted");
         }
         #endregion
     }
