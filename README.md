@@ -130,8 +130,9 @@ Get all sentences in specified text.
 /// </summary>
 /// <param name="text">Input text.</param>
 /// <param name="cleanNewLine">Clean new lines boolean, default true.</param>
+/// <param name="cleanWhitepace">Clean whitespaces boolean, default true. Otherwise preserve all whitespaces.</param>
 /// <returns>All found and not empty sentences from input text.</returns>
-public static IEnumerable<string> Sentences(this string text, bool cleanNewLine = true)
+public static IEnumerable<string> Sentences(this string text, bool cleanNewLine = true, bool cleanWhitepace = true)
 ```
 
 ## ToAcronym
