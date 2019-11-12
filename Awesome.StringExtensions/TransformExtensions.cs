@@ -57,6 +57,13 @@ namespace Awesome.StringExtensions
             }
         }
 
+        /// <summary>
+        /// Creates a acronym for the specified text and returns result.
+        /// Removes all non alphabetical characters and forms an acronym from all principle words.
+        /// With current culture specific handling of articles, conjunctions and prepositions.
+        /// </summary>
+        /// <param name="text">Input text.</param>
+        /// <returns>An acronym for the input text.</returns>
         public static string ToAcronym(this string text)
         {
             return ToAcronym(text, CultureInfo.CurrentCulture);
