@@ -1,10 +1,6 @@
-﻿using Awesome.StringExtensions.Models;
-using Newtonsoft.Json;
+﻿using Awesome.StringExtensions.Helpers;
 using System;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Awesome.StringExtensions
@@ -91,77 +87,6 @@ namespace Awesome.StringExtensions
         #region "ToTitleCase"
 
         /// <summary>
-        /// Stores culture support data for ToTitleCase method. (<see cref="ToTitleCase(string, CultureInfo)"/>)
-        /// </summary>
-        private static (CultureInfo info, CultureData data) cultureInfoData;
-
-        /// <summary>
-        /// Retrieves culture support data from embedded resource json files, based on specified culture.
-        /// </summary>
-        /// <param name="culture">Culture to identify culture support data file.</param>
-        /// <returns>Status boolean, indicating if support data was found for specified culture.</returns>
-        /// <remarks>
-        /// If culture data is not found for specified culture, attempt is made to find another support data with same base language.
-        /// e.g. If culture en-GB is not found, a search is made based on culture TwoLetterISOLanguageName (en).
-        /// Any culture with same base language will be used as a replacement. (en-US could replace en-GB)
-        /// </remarks>
-        private static bool InitializeCultureData(CultureInfo culture)
-        {
-            //Init
-            var succeeded = false;
-
-            try
-            {
-                //Get assembly information
-                var assembly = Assembly.GetExecutingAssembly();
-                var names = assembly.GetManifestResourceNames();
-
-                //Clear culture info data
-                cultureInfoData.info = default;
-                cultureInfoData.data = default;
-
-                //Find culture resource
-                var resourceName = names.FirstOrDefault(name => name.Contains($".{culture.Name}.json"));
-                if (resourceName == null)
-                {
-                    //Attempt to find substitute culture resource
-                    resourceName = names.FirstOrDefault(name => name.Contains($".{culture.TwoLetterISOLanguageName}-"));
-                }
-
-                //Found culture resource?
-                if (!string.IsNullOrEmpty(resourceName))
-                {
-                    //Get resource text
-                    var result = string.Empty;
-                    using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        result = reader.ReadToEnd();
-                    }
-
-                    //Attempt to deserialize json
-                    var data = JsonConvert.DeserializeObject<CultureData>(result);
-                    if (data != null)
-                    {
-                        cultureInfoData.info = culture;
-                        cultureInfoData.data = data;
-                        succeeded = true;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                //Clear
-                cultureInfoData.info = default;
-                cultureInfoData.data = default;
-                succeeded = false;
-            }
-
-            //Return status if culture resource was found
-            return succeeded;
-        }
-
-        /// <summary>
         /// Converts string to title case with culture specific handling of articles, conjunctions and prepositions.
         /// </summary>
         /// <param name="text">Input text.</param>
@@ -185,7 +110,7 @@ namespace Awesome.StringExtensions
                 throw new ArgumentNullException(nameof(culture));
 
             //Verify culture info data
-            if (!CultureInfo.Equals(cultureInfoData.info, culture) && !InitializeCultureData(culture))
+            if (!CultureInfoData.InitializeCultureData(culture))
                 return culture.TextInfo.ToTitleCase(text);
             else
             {
@@ -205,9 +130,9 @@ namespace Awesome.StringExtensions
                 //Evaluate word
                 var lastWord = !word.NextMatch().Success;
                 return word.Index > 0 && !lastWord && word.Value.Length <= 3
-                    && cultureInfoData.data.Articles.Contains(lower)
-                    || cultureInfoData.data.Conjunctions.Contains(lower)
-                    || cultureInfoData.data.Prepositions.Contains(lower)
+                    && CultureInfoData.InfoData.data.Articles.Contains(lower)
+                    || CultureInfoData.InfoData.data.Conjunctions.Contains(lower)
+                    || CultureInfoData.InfoData.data.Prepositions.Contains(lower)
                     ? lower : word.Value;
             }
         }

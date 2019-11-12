@@ -8,15 +8,12 @@ namespace Tests
     [TestClass]
     public class CountExtensionsTests
     {
-        private const string BaseSentence = "Mr Sherlock Holmes and Dr John Watson were better than the F.B.I. at crime fighting!";
-        private const string DuplicateWordSentence = BaseSentence + " That is the truth and nothing but the truth!";
-
         #region "CountWords Tests"
         [TestMethod]
         public void CountWords_ShouldBeCorrectCount()
         {
             //Assert
-            BaseSentence.CountWords().Should().Be(17, "because all words should be counted");
+            Common.BaseSentence.CountWords().Should().Be(17, "because all words should be counted");
         }
         #endregion
 
@@ -25,7 +22,7 @@ namespace Tests
         public void CountUniqueWords_ShouldBeCorrectCount()
         {
             //Assert
-            DuplicateWordSentence.CountUniqueWords().Should().Be(22, "because all unique words should be counted");
+            Common.DuplicateWordSentence.CountUniqueWords().Should().Be(22, "because all unique words should be counted");
         }
         #endregion
 
@@ -34,7 +31,7 @@ namespace Tests
         public void CountWordLengths_ShouldNotBeEmptyAndHaveCorrectCountAndCorrectLengths()
         {
             //Assert
-            BaseSentence.CountWordLengths().Should()
+            Common.BaseSentence.CountWordLengths().Should()
                 .NotBeEmpty("because input text is not empty")
                 .And.HaveCount(7, "because all different word lengths should be counted")
                 .And.Equal(new List<(int Length, int Count)> { (1, 3), (2, 3), (3, 2), (4, 3), (5, 1), (6, 3), (8, 2) });
@@ -46,7 +43,7 @@ namespace Tests
         public void CountSentences_ShouldBeCorrectCount()
         {
             //Assert
-            DuplicateWordSentence.CountSentences().Should().Be(2, "because all sentences should be counted");
+            Common.DuplicateWordSentence.CountSentences().Should().Be(2, "because all sentences should be counted");
         }
         #endregion
     }

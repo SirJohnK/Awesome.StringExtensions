@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using Awesome.StringExtensions.Helpers;
+using System;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -10,16 +13,25 @@ namespace Awesome.StringExtensions
 
         /// <summary>
         /// Creates a acronym for the specified text and returns result.
-        /// Removes all non alphabetical characters and forms an acronym from the remaining words.
+        /// Removes all non alphabetical characters and forms an acronym from all principle words.
         /// </summary>
         /// <param name="text">Input text.</param>
+        /// <param name="culture">Language culture to retrive and identify words.</param>
+        /// <param name="onlyPrincipalWords">Use only principal words boolean, default true. Otherwise include all words.</param>
         /// <returns>An acronym for the input text.</returns>
         /// <remarks>Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).</remarks>
-        public static string ToAcronym(this string text)
+        public static string ToAcronym(this string text, CultureInfo culture, bool onlyPrincipalWords = true)
         {
             //Verify text parameter
             if (string.IsNullOrWhiteSpace(text))
                 return text;
+
+            //Verify culture parameter
+            if (culture == null)
+                throw new ArgumentNullException(nameof(culture));
+
+            //Verify culture info data and set principle word handling
+            onlyPrincipalWords = onlyPrincipalWords && CultureInfoData.InitializeCultureData(culture);
 
             //Remove all non alphabetical characters, but preserve whitespace
             var result = text.ToAlphabetic();
@@ -33,9 +45,21 @@ namespace Awesome.StringExtensions
             //Internal evaluator
             string WordEvaluator(Match word)
             {
+                //Init
+                var lower = word.Value.ToLower();
+
                 //Evaluate word
-                return string.IsNullOrWhiteSpace(word.Value) ? string.Empty : word.Value.Substring(0, 1).ToUpper();
+                return string.IsNullOrWhiteSpace(word.Value)
+                    || (onlyPrincipalWords && CultureInfoData.InfoData.data.Articles.Contains(lower)
+                    || CultureInfoData.InfoData.data.Conjunctions.Contains(lower)
+                    || CultureInfoData.InfoData.data.Prepositions.Contains(lower))
+                    ? string.Empty : word.Value.Substring(0, 1).ToUpper();
             }
+        }
+
+        public static string ToAcronym(this string text)
+        {
+            return ToAcronym(text, CultureInfo.CurrentCulture);
         }
 
         #endregion "ToAcronym"
