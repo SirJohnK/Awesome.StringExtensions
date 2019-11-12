@@ -140,6 +140,7 @@ public static IEnumerable<string> Sentences(this string text, bool cleanNewLine 
 Creates a acronym for the specified text and returns result.
 * Removes all non alphabetical characters and forms an acronym from all principle words.
 * *Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).*
+* For culture handling, see [Supported languages](#Supported languages).
 
 ```csharp
 /// <summary>
@@ -152,6 +153,16 @@ Creates a acronym for the specified text and returns result.
 /// <returns>An acronym for the input text.</returns>
 /// <remarks>Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).</remarks>
 public static string ToAcronym(this string text, CultureInfo culture, bool onlyPrincipalWords = true)
+```
+```csharp
+/// <summary>
+/// Creates a acronym for the specified text and returns result.
+/// Removes all non alphabetical characters and forms an acronym from all principle words.
+/// With current culture specific handling of articles, conjunctions and prepositions.
+/// </summary>
+/// <param name="text">Input text.</param>
+/// <returns>An acronym for the input text.</returns>
+public static string ToAcronym(this string text)
 ```
 
 ## ToAlphabetic
