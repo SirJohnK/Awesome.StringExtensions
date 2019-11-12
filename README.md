@@ -140,7 +140,7 @@ public static IEnumerable<string> Sentences(this string text, bool cleanNewLine 
 Creates a acronym for the specified text and returns result.
 * Removes all non alphabetical characters and forms an acronym from all principle words.
 * *Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).*
-* For culture handling, see [Supported languages](#Supported languages).
+* For culture handling, see [Supported languages](#supported-languages).
 
 ```csharp
 /// <summary>
