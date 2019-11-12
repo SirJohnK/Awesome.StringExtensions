@@ -138,18 +138,20 @@ public static IEnumerable<string> Sentences(this string text, bool cleanNewLine 
 ## ToAcronym
 
 Creates a acronym for the specified text and returns result.
-* Removes all non alphabetical characters and forms an acronym from the remaining words.
+* Removes all non alphabetical characters and forms an acronym from all principle words.
 * *Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).*
 
 ```csharp
 /// <summary>
 /// Creates a acronym for the specified text and returns result.
-/// Removes all non alphabetical characters and forms an acronym from the remaining words.
+/// Removes all non alphabetical characters and forms an acronym from all principle words.
 /// </summary>
 /// <param name="text">Input text.</param>
+/// <param name="culture">Language culture to retrive and identify words.</param>
+/// <param name="onlyPrincipalWords">Use only principal words boolean, default true. Otherwise include all words.</param>
 /// <returns>An acronym for the input text.</returns>
 /// <remarks>Definition of acronym - an abbreviation formed from the initial letters of other words and pronounced as a word (e.g. ASCII, NASA).</remarks>
-public static string ToAcronym(this string text)
+public static string ToAcronym(this string text, CultureInfo culture, bool onlyPrincipalWords = true)
 ```
 
 ## ToAlphabetic
