@@ -29,7 +29,7 @@ namespace Tests
 
         #endregion "RemoveWhitespace Tests"
 
-        #region "RemoveWhitespace Tests"
+        #region "ReplaceWhitespace Tests"
 
         [TestMethod]
         public void ReplaceWhitespace_ShouldBeWithAllWhitespacesReplacedBySingleCharacter()
@@ -45,6 +45,6 @@ namespace Tests
             Common.AlphaNumeric.ReplaceWhitespace("$", false).Should().Be("!A1$$$$#B2$$¤C3$$$%D4$&E5$$$$$$/F6$(G7$$)H8$$$$$$=I9$@J0", "because all whitespaces should be replaced with $");
         }
 
-        #endregion "RemoveWhitespace Tests"
+        #endregion "ReplaceWhitespace Tests"
     }
 }
