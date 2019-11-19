@@ -50,9 +50,9 @@ namespace Awesome.StringExtensions
 
                 //Evaluate word
                 return string.IsNullOrWhiteSpace(word.Value)
-                    || (onlyPrincipalWords && CultureInfoData.InfoData.data.Articles.Contains(lower)
-                    || CultureInfoData.InfoData.data.Conjunctions.Contains(lower)
-                    || CultureInfoData.InfoData.data.Prepositions.Contains(lower))
+                    || (onlyPrincipalWords && (CultureInfoData.InfoData.data?.Articles?.Contains(lower) ?? false)
+                    || (CultureInfoData.InfoData.data?.Conjunctions?.Contains(lower) ?? false)
+                    || (CultureInfoData.InfoData.data?.Prepositions?.Contains(lower) ?? false))
                     ? string.Empty : word.Value.Substring(0, 1).ToUpper();
             }
         }

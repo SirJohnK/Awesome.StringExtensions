@@ -1,5 +1,4 @@
 ﻿using Awesome.StringExtensions.Helpers;
-using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -105,10 +104,6 @@ namespace Awesome.StringExtensions
             if (string.IsNullOrWhiteSpace(text))
                 return text;
 
-            //Verify culture parameter
-            if (culture == null)
-                throw new ArgumentNullException(nameof(culture));
-
             //Verify culture info data
             if (!CultureInfoData.InitializeCultureData(culture))
                 return culture.TextInfo.ToTitleCase(text);
@@ -129,10 +124,11 @@ namespace Awesome.StringExtensions
 
                 //Evaluate word
                 var lastWord = !word.NextMatch().Success;
+
                 return word.Index > 0 && !lastWord && word.Value.Length <= 3
-                    && CultureInfoData.InfoData.data.Articles.Contains(lower)
-                    || CultureInfoData.InfoData.data.Conjunctions.Contains(lower)
-                    || CultureInfoData.InfoData.data.Prepositions.Contains(lower)
+                    && (CultureInfoData.InfoData.data?.Articles?.Contains(lower) ?? false)
+                    || (CultureInfoData.InfoData.data?.Conjunctions?.Contains(lower) ?? false)
+                    || (CultureInfoData.InfoData.data?.Prepositions?.Contains(lower) ?? false)
                     ? lower : word.Value;
             }
         }

@@ -13,7 +13,7 @@ namespace Awesome.StringExtensions.Helpers
         /// <summary>
         /// Stores culture support data./>)
         /// </summary>
-        internal static (CultureInfo info, CultureData data) InfoData;
+        internal static (CultureInfo? info, CultureData? data) InfoData;
 
         /// <summary>
         /// Retrieves culture support data from embedded resource json files, based on specified culture.
@@ -27,10 +27,6 @@ namespace Awesome.StringExtensions.Helpers
         /// </remarks>
         internal static bool InitializeCultureData(CultureInfo culture)
         {
-            //Verify culture parameter
-            if (culture == null)
-                throw new ArgumentNullException(nameof(culture));
-
             //Exit if specified culture already inilialized
             if (CultureInfo.Equals(InfoData.info, culture))
                 return true;

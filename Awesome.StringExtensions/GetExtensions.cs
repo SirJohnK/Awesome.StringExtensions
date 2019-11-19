@@ -18,9 +18,12 @@ namespace Awesome.StringExtensions
         /// <remarks>All empty and only whitespace words are excluded.</remarks>
         public static IEnumerable<string> Words(this string text)
         {
+            //Init
+            var defaultValue = Enumerable.Empty<string>();
+
             //Verify text parameter
             if (string.IsNullOrWhiteSpace(text))
-                return default;
+                return defaultValue;
 
             //Get all words
             var matches = Regex.Matches(text, @"\w+") as IEnumerable<Match>;
@@ -36,12 +39,15 @@ namespace Awesome.StringExtensions
         /// <returns>All unique words from input text.</returns>
         public static IEnumerable<string> UniqueWords(this string text)
         {
+            //Init
+            var defaultValue = Enumerable.Empty<string>();
+
             //Verify text parameter
             if (string.IsNullOrWhiteSpace(text))
-                return default;
+                return defaultValue;
 
             //Group all unique words
-            var result = text.Words()?.GroupBy(word => word).Select(wordGroup => wordGroup.Key);
+            var result = text.Words()?.GroupBy(word => word).Select(wordGroup => wordGroup.Key) ?? defaultValue;
 
             //Return all unique words
             return result;
@@ -56,9 +62,12 @@ namespace Awesome.StringExtensions
         /// <returns>All found and not empty sentences from input text.</returns>
         public static IEnumerable<string> Sentences(this string text, bool cleanNewLine = true, bool cleanWhitepace = true)
         {
+            //Init
+            var defaultValue = Enumerable.Empty<string>();
+
             //Verify text parameter
             if (string.IsNullOrWhiteSpace(text))
-                return default;
+                return defaultValue;
 
             //Get all scentences
             var matches = Regex.Matches(text, @"((\s[^\.\!\?]\.)+|([^\.\!\?]\.)+|[^\.\!\?]+)+[\.\!\?]+(\s|$)") as IEnumerable<Match>;

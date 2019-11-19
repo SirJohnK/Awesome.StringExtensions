@@ -44,15 +44,18 @@ namespace Awesome.StringExtensions
         /// <returns>The ordered list of occurrences of all different word lengths.</returns>
         public static IOrderedEnumerable<(int Length, int Count)> CountWordLengths(this string text)
         {
+            //Init
+            var defaultValue = Enumerable.Empty<(int Length, int Count)>().OrderBy(wordLength => wordLength.Length);
+
             //Verify text parameter
             if (string.IsNullOrWhiteSpace(text))
-                return default;
+                return defaultValue;
 
             //Count word lengths
             var lengths = text.Words()?.GroupBy(word => word.Length);
 
             //Return ordered count word lengths
-            var result = lengths?.Select(lengthGroup => (Length: lengthGroup.Key, Count: lengthGroup.Count())).OrderBy(wordLength => wordLength.Length);
+            var result = lengths?.Select(lengthGroup => (Length: lengthGroup.Key, Count: lengthGroup.Count())).OrderBy(wordLength => wordLength.Length) ?? defaultValue;
 
             //Return all ordered word length counts
             return result;
