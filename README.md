@@ -2,11 +2,11 @@
 
 A collection of awesome string extension methods.
 
-## NuGets ##
+### NuGet
 
 |Name|Info|
 | ------------------- | :------------------: |
-|Awesome.StringExtensions|[![NuGet](https://buildstats.info/nuget/Awesome.StringExtensions?includePreReleases=true)]
+|Awesome.StringExtensions|[![NuGet](https://buildstats.info/nuget/Awesome.StringExtensions?includePreReleases=true)](https://www.nuget.org/packages/Awesome.StringExtensions/)|
 
 ## What's included?
 
