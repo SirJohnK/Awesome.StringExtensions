@@ -2,6 +2,12 @@
 
 A collection of awesome string extension methods.
 
+## NuGets ##
+
+|Name|Info|
+| ------------------- | :------------------: |
+|Awesome.StringExtensions|[![NuGet](https://buildstats.info/nuget/Awesome.StringExtensions?includePreReleases=true)]
+
 ## What's included?
 
 The following string extensions are available in Awesome.StringExtensions:
