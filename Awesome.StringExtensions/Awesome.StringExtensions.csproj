@@ -9,9 +9,14 @@
     <Copyright>© 2019 Johan Svensson All Rights Reserved</Copyright>
     <RootNamespace>Awesome.StringExtensions</RootNamespace>
     <ApplicationIcon>sirjohnk.ico</ApplicationIcon>
+    <Title>Awesome.StringExtensions</Title>
     <Description>A collection of awesome string extension methods.</Description>
     <PackageProjectUrl>https://github.com/SirJohnK/Awesome.StringExtensions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SirJohnK/Awesome.StringExtensions</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>sirjohnk.png</PackageIcon>
+    <PackageTags>dotnet,dotnet-standard,extension-methods,string-manipulation</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="CultureData\de-DE.json" />
@@ -19,6 +24,8 @@
     <None Remove="CultureData\es-ES.json" />
     <None Remove="CultureData\fr-FR.json" />
     <None Remove="CultureData\sv-SE.json" />
+    <None Include="..\LICENSE" Pack="True" PackagePath="" />
+    <None Include="sirjohnk.png" Pack="True" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CultureData\fr-FR.json" />
