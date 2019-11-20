@@ -63,10 +63,11 @@ namespace Awesome.StringExtensions
         /// With current culture specific handling of articles, conjunctions and prepositions.
         /// </summary>
         /// <param name="text">Input text.</param>
+        /// <param name="onlyPrincipalWords">Use only principal words boolean, default true. Otherwise include all words.</param>
         /// <returns>An acronym for the input text.</returns>
-        public static string ToAcronym(this string text)
+        public static string ToAcronym(this string text, bool onlyPrincipalWords = true)
         {
-            return ToAcronym(text, CultureInfo.CurrentCulture);
+            return ToAcronym(text, CultureInfo.CurrentCulture, onlyPrincipalWords);
         }
 
         #endregion "ToAcronym"
